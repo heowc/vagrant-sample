@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo '============================= DEFAILT SETTING ============================='
 sudo yum update -y
 sudo yum install -y curl
