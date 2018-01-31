@@ -17,9 +17,13 @@ $ vagrant box add centos/6
 
 ## plugin
 
+Optional: VirtualBox
+
 ```bash
 $ vagrant plugin install vagrant-vbguest
 ```
+
+Optional: windows OS
 
 ```bash
 $ vagrant plugin install vagrant-winnfsd

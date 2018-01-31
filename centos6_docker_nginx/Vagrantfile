@@ -6,7 +6,7 @@ $DOCKER_NGINX_SCRIPT = <<SCRIPT
   sudo docker stop docker-nginx
   sudo docker rm docker-nginx
   sudo docker rmi vagrant-docker-nginx:0.1
-  sudo docker build -t vagrant-docker-nginx:0.1 -f /vagrant/DockerFile /vagrant
+  sudo docker build -t vagrant-docker-nginx:0.1 -f /vagrant/Dockerfile /vagrant
   sudo docker run --name docker-nginx -d --net=host vagrant-docker-nginx:0.1
 SCRIPT
 
