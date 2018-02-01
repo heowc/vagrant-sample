@@ -28,3 +28,9 @@ Optional: windows OS
 ```bash
 $ vagrant plugin install vagrant-winnfsd
 ```
+
+Optional: docker-compose in box
+
+```bash
+$ vagrant plugin install vagrant-docker-compose
+```
