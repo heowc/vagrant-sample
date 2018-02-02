@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$DOCKER_NGINX_SCRIPT = <<SCRIPT
+  echo '================================ NGINX ================================='
+  sudo docker-compose -f /vagrant/docker-compose.yml up -d
+SCRIPT
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/6"
+
+  config.vm.synced_folder "~\\", "/c/User"
+  config.vm.synced_folder ".", "/vagrant"
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  config.vm.provision "shell", path: './provisioning/default_setting.sh'
+  config.vm.provision "shell", path: './provisioning/docker.sh'
+  config.vm.provision "shell", inline: $DOCKER_NGINX_SCRIPT
+
+  config.vm.provider "virtualbox" do |v|
+	v.memory = 2048
+	v.cpus = 2
+  end
+end
