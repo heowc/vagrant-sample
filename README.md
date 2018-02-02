@@ -15,6 +15,10 @@ $ vagrant ssh
 $ vagrant box add centos/6
 ```
 
+```bash
+$ vagrant box add bento/ubuntu-16.04
+```
+
 ## plugin
 
 Optional: VirtualBox
