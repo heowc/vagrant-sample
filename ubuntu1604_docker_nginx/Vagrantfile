@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$DOCKER_NGINX_SCRIPT = <<SCRIPT
+  echo '============================== DOCKER NGINX =============================='
+  sudo docker stop docker-nginx
+  sudo docker rm docker-nginx
+  sudo docker rmi vagrant-docker-nginx:0.1
+  sudo docker build -t vagrant-docker-nginx:0.1 -f /vagrant/Dockerfile /vagrant
+  sudo docker run --name docker-nginx -d --net=host vagrant-docker-nginx:0.1
+SCRIPT
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-16.04"
+
+  config.vm.synced_folder "~/", "/host"
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  config.vm.provision "shell", path: './provisioning/default_setting.sh'
+  config.vm.provision "shell", path: './provisioning/docker.sh'
+  config.vm.provision "shell", inline: $DOCKER_NGINX_SCRIPT
+
+  config.vm.provider "virtualbox" do |v|
+	  v.memory = 2048
+	  v.cpus = 2
+  end
+end
