@@ -1,2 +1,6 @@
-**/.vagrant
+*/.vagrant
 .idea
+
+
+*/terraform-sample
+*/terraform.tfvars
