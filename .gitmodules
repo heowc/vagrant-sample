@@ -1,0 +1,3 @@
+[submodule "terraform-sample"]
+	path = ubuntu1604_terraform/terraform-sample
+	url = https://github.com/heowc/terraform-sample.git
